@@ -12,7 +12,9 @@ jobs: # 执行的工作
       - name: Checkout code
         uses: actions/checkout@v3  # 用于将github代码仓库的代码拷贝到工作目录中
       - name: del
-        run: rm -rf temp
+        run: |
+          rm -rf temp
+          rm -rf .idea
       - name: Push
         run: |
           git config user.name github-actions
