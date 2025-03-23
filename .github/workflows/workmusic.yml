@@ -18,4 +18,4 @@ jobs: # 执行的工作
           python-version: '3.9'  # 选择要用的Python版本
   
       - name: Run main.py
-        run: python /work/writing/n/index.py # 执行py文件    依据自己代码要运行的py情况而定
+        run: python "work/writing/n/index.py" # 执行py文件    依据自己代码要运行的py情况而定
