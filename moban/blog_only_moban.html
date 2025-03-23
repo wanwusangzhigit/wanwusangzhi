@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6775988347285724"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客文章详情</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lora', serif;
+            background: linear-gradient(135deg, #1e272e, #2c3e50);
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background 0.3s ease;
+        }
+        header.scrolled {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        header nav {
+            display: flex;
+            align-items: center;
+        }
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-left: 20px;
+            transition: color 0.3s ease;
+        }
+        header nav a:hover {
+            color: #00ff80;
+        }
+        .main-content {
+            padding: 100px 50px;
+            text-align: center;
+        }
+        .main-content h1 {
+            font-size: 3rem;
+            margin: 0 0 20px;
+            animation: fadeIn 1s forwards;
+        }
+        .main-content p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+        .main-content .date {
+            font-size: 1rem;
+            color: #888;
+            margin: 10px 0;
+        }
+        .main-content .article {
+            text-align: left;
+            margin-top: 40px;
+            font-size: 1.2rem;
+        }
+        .main-content .article h2 {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+        .main-content .article img {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            display: block;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        .main-content .article p {
+            margin: 15px 0;
+        }
+        .main-content .article blockquote {
+            font-style: italic;
+            border-left: 4px solid #00ff80;
+            padding-left: 10px;
+            margin: 20px 0;
+        }
+        .main-content .article a {
+            color: #00ff80;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .main-content .article a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>我的博客</h1>
+        <nav>
+            <a href="/">首页</a>
+            <a href="/about">关于我</a>
+            <a href="/contact">联系我</a>
+        </nav>
+    </header>
+    <div class="main-content">
+        <h1>文章标题：星辰下的思考</h1>
+        <p class="date">发布日期：2025年1月21日</p>
+        <div class="article">
+            <p>在这个宁静的夜晚，我独自坐在窗前，仰望着繁星点点的夜空。星辰闪烁，仿佛在诉说着古老的故事，而我，只是这宇宙中微不足道的一粒尘埃。</p>
+            <img src="https://via.placeholder.com/600x400" alt="星空">
+            <p>星辰下的思考总是充满了诗意。它们让我想起那些伟大的诗人，他们在文字中描绘了宇宙的浩瀚与人类的渺小。正如李白所说：“君不见黄河之水天上来，奔流到海不复回。”</p>
+            <blockquote>在星辰的照耀下，我们才真正意识到自己的渺小。</blockquote>
+            <p>我喜欢在这样的夜晚，用文字记录下自己的想法。或许这些文字并不完美，但它们是我与这个世界对话的方式。星辰是我永恒的伙伴，它们见证了我的成长，也陪伴着我度过每一个孤独的夜晚。</p>
+            <p>如果你也喜欢在夜晚仰望星空，不妨和我分享你的故事。我们可以一起在这浩瀚的宇宙中，寻找属于自己的诗意。</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 [你的名字]</p>
+    </footer>
+</body>
+</html>

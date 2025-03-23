@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+<head>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6775988347285724"
+     crossorigin="anonymous"></script>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>p</title>
+</head>
+<body><h1 id='抽取网易云音乐热门评论htmlcsspythonjs-音乐与灵魂的碰撞'>抽取网易云音乐热门评论：html+css+python+js 音乐与灵魂的碰撞</h1>
+<p><a href='https://github.com/fjsje/wanwusangzhi/tree/main/work/writing'>代码链接</a>
+<img src="assets/p.assets/a150ce66a4e24b569b4c798d968acb6e.png" referrerpolicy="no-referrer" alt="效果展示">
+不说废话，上代码！！！</p>
+<h2 id='getpy'>get.py</h2>
+<pre><code class='language-python' lang='python'># get.py
+import urllib.request
+import urllib.error
+import urllib.parse
+import json
+
+
+# 抓取网易云音乐指定url的热评
+def get_hotComments(id):
+    url = &#39;https://music.163.com/weapi/v1/resource/comments/R_SO_4_&#39;+id+&#39;?csrf_token=&#39;   # 歌评url
+    header = {&#39;User-Agent&#39;: &quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1&quot;}
+
+    # post请求表单数据
+    data = {&#39;params&#39;:&#39;LPkOcWb/uz2Nj6xw+RFhGJ1PkFi4+lh4agK+1jRGmjMAiOcJ5RHxQBbZa+aME54AUdi21JkqLu/yeHjjIaLQJ4wzqiuzrzYUKciRCqmCDX9ziKoktv5mgvvlA5+A9a7kUF5pabudBaWjsut+9T5kfHQBv75fIcDRt/Anyb8FnG/Ro6R8IStD0/JknFvH5+3S&#39;,
+            &#39;encSecKey&#39;:&#39;5627cc7941cf4cbd59b13668efe38a622ed0889d33cdcf603d18b025eb34ac434c882ed5ad16ca06e88e40a8b91de455483d0b88b6b460ca146b163e67ebab688b2feb4f22369db85a926744bad9114d3cddd00ca6255d7cdcad6cf7b9300a6fdf49adf983087cd830131fabbac39ec4a526432958309cf92c0b5a6bc177078b&#39;}
+    postdata = urllib.parse.urlencode(data).encode(&#39;utf8&#39;)  # 进行编码
+    request = urllib.request.Request(url, headers=header, data=postdata)
+    response = urllib.request.urlopen(request).read().decode(&#39;utf8&#39;)
+    json_dict = json.loads(response)   # 获取json
+    hot_comment = json_dict[&#39;hotComments&#39;]  # 获取json中的热门评论
+    print(id)
+    num = 1
+    for item in hot_comment:
+        printer1=item[&#39;content&#39;]
+        with open(&quot;comments.txt&quot;,&quot;a&quot;,encoding=&#39;utf-8&#39;) as f:
+            f.write(&#39;id : &#39;+id+&#39; : &#39;+printer1)
+            f.write(&quot;\n&quot;)
+            f.close()
+        print(&#39;id : &#39;+id+&#39; &#39;+&#39;第%d条评论：&#39; % num+printer1)
+        num += 1
+
+if __name__ == &#39;__main__&#39;:
+    id=input()
+    get_hotComments(id)
+</code></pre>
+<h2 id='indexpy'>index.py</h2>
+<pre><code class='language-python' lang='python'>import get as g
+n=int(input())
+while 1:
+	g.get_hotComments(str(n))
+	n=n+1
+</code></pre>
+<p>注：n为网易云音乐歌曲id。
+例如：网易云音乐链接：<a href='https://music.163.com/#/song?id=2016388286' target='_blank' class='url'>https://music.163.com/#/song?id=2016388286</a>
+id为2016388286
+id通常为8位-10位数字。
+<strong>结尾附上部分comments.txt文件</strong></p>
+<h2 id='indexhtml'>index.html</h2>
+<p>重头戏来了！</p>
+<pre><code class='language-html' lang='html'>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;随机云村评论&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: &#39;Arial&#39;, sans-serif;
+            background: linear-gradient(135deg, #1e272e, #2c3e50);
+            color: #ffffff;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            padding: 40px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        .container h1 {
+            font-size: 3rem;
+            margin: 0 0 20px;
+        }
+        .container h2 {
+            font-size: 1.5rem;
+            margin: 0 0 15px;
+        }
+        .container p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+        .button {
+            padding: 10px 20px;
+            background: #00ff80;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            color: #1e272e;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .button:hover {
+            background: #00e676;
+            transform: scale(1.1);
+        }
+        a {
+            color: #00ff80;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #00e676;
+            text-decoration: underline;
+        }
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .music-player {
+            margin-top: 20px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;canvas class=&quot;particles&quot;&gt;&lt;/canvas&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;随机云村评论&lt;/h1&gt;
+        &lt;h2&gt;音乐与灵魂的碰撞&lt;/h2&gt;
+        &lt;a href=&quot;/&quot;&gt;返回首页&lt;/a&gt;
+        &lt;p id=&quot;comment&quot;&gt;点击按钮随机抽取一条评论&lt;/p&gt;
+        &lt;button class=&quot;button&quot; onclick=&quot;fetchRandomComment()&quot;&gt;抽取评论&lt;/button&gt;
+        &lt;div class=&quot;music-player&quot; id=&quot;musicPlayer&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        let comments = [];
+
+        // 从服务器加载评论文件
+        async function loadComments() {
+            try {
+                const response = await fetch(&#39;comments.txt&#39;);
+                if (!response.ok) {
+                    throw new Error(&#39;Failed to fetch comments&#39;);
+                }
+                const fileContent = await response.text();
+                comments = parseComments(fileContent);
+                document.getElementById(&#39;comment&#39;).textContent = &quot;点击按钮随机抽取一条评论&quot;;
+            } catch (error) {
+                console.error(&quot;Failed to load comments:&quot;, error);
+                document.getElementById(&#39;comment&#39;).textContent = &quot;加载评论失败，请稍后再试。&quot;;
+            }
+        }
+
+        // 解析评论内容
+        function parseComments(fileContent) {
+            const lines = fileContent.split(&#39;\n&#39;);
+            const parsedComments = [];
+            let currentComment = null;
+
+            lines.forEach(line =&gt; {
+                const trimmedLine = line.trim();
+                if (trimmedLine === &quot;&quot;) return;
+
+                const parts = trimmedLine.split(&#39; : &#39;);
+                if (parts.length &gt;= 3) {
+                    if (currentComment) {
+                        parsedComments.push(currentComment);
+                    }
+                    currentComment = { id: parts[0].trim(), number: parts[1].trim(), content: parts.slice(2).join(&#39; : &#39;).trim() };
+                } else if (currentComment) {
+                    currentComment.content += &quot;\n&quot; + trimmedLine;
+                }
+            });
+
+            if (currentComment) {
+                parsedComments.push(currentComment);
+            }
+
+            return parsedComments;
+        }
+
+        // 随机抽取评论
+        function fetchRandomComment() {
+            if (comments.length === 0) {
+                loadComments();
+                return;
+            }
+
+            const randomIndex = Math.floor(Math.random() * comments.length);
+            const comment = comments[randomIndex];
+            const songUrl = `https://music.163.com/#/song?id=${comment.number}`;
+            document.getElementById(&#39;comment&#39;).innerHTML = `来自歌曲&lt;a href=&quot;${songUrl}&quot; target=&quot;_blank&quot;&gt;${comment.number}&lt;/a&gt;的评论：${comment.content}`;
+            const musicPlayerDiv = document.getElementById(&#39;musicPlayer&#39;);
+            musicPlayerDiv.innerHTML = `&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot; src=&quot;//music.163.com/outchain/player?type=2&amp;id=${comment.number}&amp;auto=1&amp;height=66&quot;&gt;&lt;/iframe&gt;`;
+        }
+
+        // 初次加载时尝试加载评论
+        loadComments();
+
+        // 粒子效果
+        document.addEventListener(&#39;DOMContentLoaded&#39;, () =&gt; {
+            const canvas = document.querySelector(&#39;.particles&#39;);
+            const ctx = canvas.getContext(&#39;2d&#39;);
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            window.addEventListener(&#39;resize&#39;, () =&gt; {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+
+            const particles = [];
+
+            class Particle {
+                constructor(x, y, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.color = color;
+                    this.size = Math.random() * 3 + 1;
+                    this.speedX = Math.random() * 2 - 1;
+                    this.speedY = Math.random() * 2 - 1;
+                }
+
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    if (this.x &lt; 0 || this.x &gt; canvas.width) this.speedX *= -1;
+                    if (this.y &lt; 0 || this.y &gt; canvas.height) this.speedY *= -1;
+                }
+            }
+
+            function createParticles() {
+                for (let i = 0; i &lt; 100; i++) {
+                    const x = Math.random() * canvas.width;
+                    const y = Math.random() * canvas.height;
+                    const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    particles.push(new Particle(x, y, color));
+                }
+            }
+
+            createParticles();
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(particle =&gt; {
+                    particle.draw();
+                    particle.update();
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id='commentstxt'>comments.txt</h2>
+<p><strong>格式</strong> :</p>
+<pre><code class='language-yaml' lang='yaml'>id : $id : $comment
+</code></pre>
+<p><a href='https://github.com/fjsje/wanwusangzhi/blob/main/work/writing/comments.txt'>部分评论 comments.txt https://github.com/fjsje/wanwusangzhi/blob/main/work/writing/comments.txt</a></p>
+<h2 id='运行指南'>运行指南</h2>
+<p>先打开<code>index.py</code>，输入起始歌曲id。
+抓取足够多的评论后，打开<code>index.html</code>
+<strong>注意</strong>：<code>index.html</code> 请在服务器上部署才能抓取<code>comments.txt</code>成功，否则会出现以下情况：
+<img src="assets/p.assets/f42678441d364d33933071abfb37e710.png" referrerpolicy="no-referrer" alt="报错">
+<strong>点赞加关注，精彩不迷路！</strong></p>
+</body>
+</html>

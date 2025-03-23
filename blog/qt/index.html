@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6775988347285724"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客总览</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lora', serif;
+            background: linear-gradient(135deg, #1e272e, #2c3e50);
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background 0.3s ease;
+        }
+        header.scrolled {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        header nav {
+            display: flex;
+            align-items: center;
+        }
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-left: 20px;
+            transition: color 0.3s ease;
+        }
+        header nav a:hover {
+            color: #00ff80;
+        }
+        .container {
+            display: flex;
+            padding: 100px 50px;
+        }
+        .main-content {
+            flex: 3;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+        .main-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .main-content .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .main-content .post-list li {
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.2s forwards;
+            animation-delay: calc(var(--index) * 0.3s);
+        }
+        .main-content .post-list .post-title {
+            font-size: 1.5rem;
+            margin: 0 0 10px;
+        }
+        .main-content .post-list .post-title a {
+            color: #00ff80;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .main-content .post-list .post-title a:hover {
+            text-decoration: underline;
+        }
+        .main-content .post-list .post-date {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        .main-content .post-list .post-excerpt {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .main-content .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        .main-content .pagination a {
+            color: #00ff80;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .main-content .pagination a:hover {
+            text-decoration: underline;
+        }
+        .sidebar {
+            flex: 1;
+            margin-left: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+            animation-delay: 0.6s;
+        }
+        .sidebar .categories, .sidebar .recommended {
+            margin-bottom: 40px;
+        }
+        .sidebar h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+        .sidebar ul li a {
+            color: #00ff80;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>我的博客</h1>
+        <nav>
+            <a href="/">首页</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="main-content">
+            <h2>最新文章</h2>
+            <ul class="post-list">
+                <li style="--index: 0;">
+                    <h3 class="post-title"><a href="./p1001">初识qt</a></h3>
+                    <p class="post-date">发布日期：2025年1月23日</p>
+                    <p class="post-excerpt">最热门的图形化软件……</p>
+                </li>
+                <!--
+                <li style="--index: 1;">
+                    <h3 class="post-title"><a href="#">如何在夜晚拍摄星空</a></h3>
+                    <p class="post-date">发布日期：2025年1月15日</p>
+                    <p class="post-excerpt">星空是大自然最浪漫的馈赠之一，但如何才能拍出令人惊叹的星空照片呢？……</p>
+                </li>
+                <li style="--index: 2;">
+                    <h3 class="post-title"><a href="#">宇宙中最神秘的现象</a></h3>
+                    <p class="post-date">发布日期：2025年1月10日</p>
+                    <p class="post-excerpt">宇宙中充满了未知，而这些神秘现象总是让人着迷……</p>
+                </li>
+                <li style="--index: 3;">
+                    <h3 class="post-title"><a href="#">诗人与星空的故事</a></h3>
+                    <p class="post-date">发布日期：2025年1月5日</p>
+                    <p class="post-excerpt">从古至今，无数诗人被星空的美丽所打动，他们用文字记录下自己的感受……</p>
+                </li>
+                -->
+            </ul>
+            <div class="pagination">
+                <!--
+                <a href="#">上一页</a>
+                -->
+                <a href="./index.html">1</a>
+                <!--
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">下一页</a>
+                -->
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="categories">
+                <h2>分类</h2>
+                <ul>
+                    <li><a href="./index.html">qt</a></li>
+                    <!--
+                    <li><a href="/category/photography">摄影技巧</a></li>
+                    <li><a href="/category/poetry">诗歌与文学</a></li>
+                    <li><a href="/category/life">生活随笔</a></li>
+                    -->
+                </ul>
+            </div>
+            <div class="recommended">
+                <h2>推荐文章</h2>
+                <ul>
+                    <li><a href="./p1001">初识qt</a></li>
+                    <!--
+                    <li><a href="#">如何在夜晚拍摄星空</a></li>
+                    <li><a href="#">诗人与星空的故事</a></li>
+                    <li><a href="#">宇宙中最神秘的现象</a></li>
+                    -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 玩物丧稚</p>
+    </footer>
+</body>
+</html>
