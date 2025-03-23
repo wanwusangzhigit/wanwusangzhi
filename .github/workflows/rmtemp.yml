@@ -1,0 +1,22 @@
+name: deltemp # 工作流程的名称
+ 
+on: # 什么时候触发
+  push:  # 当有代码推送时触发
+  schedule:
+    - cron: '*/10 * * * *'  # 每5分钟触发一次
+ 
+jobs: # 执行的工作
+  run_demo_actions:
+    runs-on: ubuntu-latest # 在最新版本的 Ubuntu 操作系统环境下运行
+    steps: # 要执行的步骤
+      - name: Checkout code
+        uses: actions/checkout@v3  # 用于将github代码仓库的代码拷贝到工作目录中
+      - name: del
+        run: rm -rf /temp
+      - name: Push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "update"
+          git push
