@@ -22,7 +22,7 @@ jobs:
         python-version: "3.10"
 
     - name: Execute Python script
-      run: python script/main.py
+      run: python work/writing/index.py
 
 
     - name: Commit changes
